@@ -1,0 +1,791 @@
+<!doctype html>
+<html lang="uz">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Khasan — Designer</title>
+    <meta name="description" content="Khasan — Designer . Contact via Telegram." />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* === Mobile-first premium styles === */
+        :root {
+            --bg1: #071024;
+            --bg2: #061226;
+            --card: rgba(255, 255, 255, 0.03);
+            --muted: #9fb0c8;
+            --accent: #60a5fa;
+            --accent2: #7c3aed;
+            --glass: rgba(255, 255, 255, 0.04);
+            --radius: 14px;
+            --maxw: 980px;
+            font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+        }
+
+        * {
+            box-sizing: border-box
+        }
+
+        html,
+        body {
+            height: 100%
+        }
+
+        body {
+            margin: 0;
+            background: linear-gradient(180deg, var(--bg1), var(--bg2));
+            color: #e6eef8;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            display: flex;
+            align-items: flex-start;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .wrap {
+            width: 100%;
+            max-width: var(--maxw);
+        }
+
+        /* Header */
+        header {
+            position: sticky;
+            top: 14px;
+            z-index: 40;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 12px;
+            padding: 12px;
+            border-radius: 12px;
+            background: linear-gradient(180deg, rgba(255, 255, 255, 0.02), rgba(255, 255, 255, 0.01));
+            backdrop-filter: blur(6px);
+            box-shadow: 0 6px 18px rgba(2, 6, 23, 0.6);
+        }
+
+        .brand {
+            display: flex;
+            gap: 12px;
+            align-items: center;
+        }
+
+        .logo {
+            width: 46px;
+            height: 46px;
+            border-radius: 10px;
+            background: linear-gradient(135deg, var(--accent), var(--accent2));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 18px;
+            color: #042b47;
+            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.45);
+        }
+
+        .brand h1 {
+            font-size: 16px;
+            margin: 0
+        }
+
+        .lead {
+            color: var(--muted);
+            font-size: 13px
+        }
+
+        nav.desktop {
+            display: flex;
+            gap: 8px;
+            align-items: center
+        }
+
+        nav a {
+            color: var(--muted);
+            text-decoration: none;
+            padding: 8px 10px;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 14px;
+            transition: color .18s, background .18s, transform .12s;
+        }
+
+        nav a:hover {
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        nav a.active {
+            color: white;
+            background: linear-gradient(90deg, rgba(96, 165, 250, 0.12), rgba(124, 58, 237, 0.12));
+        }
+
+        /* hamburger */
+        .hamburger {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 44px;
+            height: 38px;
+            background: transparent;
+            border-radius: 10px;
+            border: 0;
+            cursor: pointer;
+        }
+
+        .hamburger .lines {
+            position: relative;
+            width: 22px;
+            height: 16px;
+        }
+
+        .hamburger .lines span {
+            position: absolute;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: #e6eef8;
+            border-radius: 2px;
+            transition: all .22s;
+        }
+
+        .lines span:nth-child(1) {
+            top: 0
+        }
+
+        .lines span:nth-child(2) {
+            top: 7px
+        }
+
+        .lines span:nth-child(3) {
+            top: 14px
+        }
+
+        .hamburger.open .lines span:nth-child(1) {
+            top: 7px;
+            transform: rotate(45deg)
+        }
+
+        .hamburger.open .lines span:nth-child(2) {
+            opacity: 0
+        }
+
+        .hamburger.open .lines span:nth-child(3) {
+            top: 7px;
+            transform: rotate(-45deg)
+        }
+
+        /* mobile nav */
+        .mobile-nav {
+            display: none;
+            flex-direction: column;
+            gap: 8px;
+            margin-top: 10px;
+            padding: 12px;
+            border-radius: 12px;
+            background: rgba(255, 255, 255, 0.02);
+        }
+
+        .mobile-nav a {
+            color: var(--muted);
+            padding: 8px;
+            border-radius: 8px;
+            text-decoration: none
+        }
+
+        /* Main layout */
+        main {
+            padding: 18px 0;
+            display: grid;
+            gap: 20px;
+        }
+
+        .hero {
+            background: linear-gradient(180deg, rgba(255, 255, 255, 0.02), transparent);
+            border-radius: 14px;
+            padding: 20px;
+            display: flex;
+            gap: 14px;
+            align-items: center;
+            box-shadow: 0 12px 40px rgba(2, 6, 23, 0.6);
+        }
+
+        .hero-left {
+            flex: 1
+        }
+
+        .eyebrow {
+            color: var(--accent);
+            font-weight: 700;
+            font-size: 13px;
+            margin-bottom: 8px;
+            display: inline-block;
+        }
+
+        .hero h2 {
+            font-size: 22px;
+            margin: 0 0 8px;
+            line-height: 1.05
+        }
+
+        .hero p.lead {
+            color: var(--muted);
+            margin: 0 0 14px
+        }
+
+        .hero .cta-row {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            padding: 12px 16px;
+            border-radius: 12px;
+            border: 0;
+            cursor: pointer;
+            background: linear-gradient(90deg, var(--accent), var(--accent2));
+            color: #04203b;
+            font-weight: 700;
+            font-size: 14px;
+            box-shadow: 0 8px 20px rgba(124, 58, 237, 0.12);
+            transition: transform .16s ease, box-shadow .16s ease, opacity .12s;
+        }
+
+        .btn.secondary {
+            background: transparent;
+            color: var(--muted);
+            border: 1px solid rgba(255, 255, 255, 0.06)
+        }
+
+        .btn:active {
+            transform: translateY(1px)
+        }
+
+        .avatar {
+            width: 92px;
+            height: 92px;
+            border-radius: 14px;
+            background: linear-gradient(135deg, #0ea5e9, var(--accent2));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 800;
+            font-size: 28px;
+            color: white;
+            box-shadow: 0 8px 30px rgba(2, 6, 23, 0.6)
+        }
+
+        /* Sections */
+        section.card {
+            background: rgba(255, 255, 255, 0.02);
+            padding: 16px;
+            border-radius: 12px;
+        }
+
+        .services {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 10px;
+        }
+
+        .service {
+            padding: 14px;
+            border-radius: 10px;
+            background: linear-gradient(180deg, rgba(255, 255, 255, 0.01), transparent);
+            transition: transform .18s, box-shadow .18s;
+        }
+
+        .service:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 12px 30px rgba(2, 6, 23, 0.6);
+        }
+
+        .service h4 {
+            margin: 0 0 6px
+        }
+
+        .service p {
+            margin: 0;
+            color: var(--muted);
+            font-size: 14px
+        }
+
+        /* Contact form */
+        .contact-grid {
+            display: grid;
+            gap: 10px;
+        }
+
+        label {
+            font-size: 13px;
+            color: var(--muted);
+            display: block;
+            margin-bottom: 6px;
+        }
+
+        input,
+        textarea {
+            width: 100%;
+            padding: 12px;
+            border-radius: 10px;
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            background: transparent;
+            color: inherit;
+            resize: vertical;
+            box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.02);
+            font-size: 14px;
+        }
+
+        .note {
+            color: var(--muted);
+            font-size: 13px
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            color: var(--muted);
+            font-size: 13px;
+            padding: 22px 0;
+        }
+
+        /* Reveal helper */
+        .reveal {
+            opacity: 0;
+            transform: translateY(12px);
+            transition: all .6s cubic-bezier(.2, .9, .2, 1);
+        }
+
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* responsive */
+        @media(min-width:720px) {
+            .hero {
+                padding: 28px
+            }
+
+            .hero {
+                align-items: flex-start
+            }
+
+            .hero-left {
+                max-width: 64%
+            }
+
+            .services {
+                grid-template-columns: repeat(3, 1fr)
+            }
+
+            .avatar {
+                width: 120px;
+                height: 120px;
+                font-size: 36px
+            }
+        }
+
+        @media (max-width: 421px) {
+
+            /* ==== Navigatsiya ==== */
+            nav.desktop {
+                display: none;
+            }
+
+            .hamburger {
+                display: block;
+                font-size: 1.6rem;
+                padding: 8px;
+            }
+
+            .mobile-nav {
+                padding: 12px;
+            }
+
+            .mobile-nav a {
+                display: block;
+                padding: 10px 0;
+                font-size: 1rem;
+            }
+
+            /* ==== Hero bo‘limi ==== */
+            .hero {
+                flex-direction: column;
+                text-align: center;
+                padding: 20px 12px;
+                gap: 18px;
+                /* elementlar orasida masofa */
+            }
+
+            .hero h1 {
+                font-size: 1.5rem;
+                line-height: 1.3;
+                margin-bottom: 6px;
+            }
+
+            .hero p {
+                font-size: 1rem;
+                color: #555;
+                line-height: 1.5;
+            }
+
+            .hero .avatar {
+                display: none;
+            }
+
+            /* ==== Xizmatlar bo‘limi ==== */
+            .services {
+                display: grid;
+                grid-template-columns: 1fr;
+                gap: 18px;
+                padding: 0 12px;
+            }
+
+            .service-card {
+                padding: 16px;
+                border-radius: 12px;
+                background: #fff;
+                box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+                text-align: center;
+            }
+
+            .service-card h3 {
+                font-size: 1.1rem;
+                margin-bottom: 6px;
+            }
+
+            .service-card p {
+                font-size: 0.95rem;
+                color: #666;
+            }
+
+            /* ==== Forma va CTA ==== */
+            form div[style*="display:flex"],
+            .cta-row {
+                flex-direction: column !important;
+                align-items: stretch;
+                gap: 10px;
+            }
+
+            form input,
+            form textarea {
+                width: 100%;
+                padding: 12px;
+                font-size: 0.95rem;
+                border-radius: 8px;
+                border: 1px solid #ccc;
+            }
+
+            form button,
+            .cta {
+                width: 100%;
+                font-size: 1rem;
+                padding: 12px;
+                background: #0073e6;
+                color: #fff;
+                border-radius: 8px;
+                border: none;
+            }
+
+            form button:hover,
+            .cta:hover {
+                background: #005bb5;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="wrap">
+        <header>
+            <div class="brand">
+                <div class="logo">KH</div>
+                <div>
+                    <h1>Khusan</h1>
+                    <div class="lead">DESIGNER</div>
+                </div>
+            </div>
+
+            <nav class="desktop" aria-label="Asosiy menyu">
+                <a href="#home" class="nav-link active" data-target="home">Home</a>
+                <a href="#about" class="nav-link" data-target="about">About</a>
+                <a href="#services" class="nav-link" data-target="services">Services</a>
+                <a href="#contact" class="nav-link" data-target="contact">Contact</a>
+            </nav>
+
+            <button class="hamburger" id="hamburger" aria-label="Menyuni ochish">
+                <span class="lines"><span></span><span></span><span></span></span>
+            </button>
+        </header>
+
+        <nav class="mobile-nav hidden" id="mobileNav" aria-hidden="true">
+            <a href="#home" class="nav-link" data-target="home">Home</a>
+            <a href="#about" class="nav-link" data-target="about">About</a>
+            <a href="#services" class="nav-link" data-target="services">Services</a>
+            <a href="#contact" class="nav-link" data-target="contact">Contact</a>
+        </nav>
+
+        <main>
+            <!-- HERO -->
+            <section id="home" class="hero reveal">
+                <div class="hero-left">
+                    <div class="eyebrow">Salom — Men KHusan</div>
+                    <h2>Professional, Kreativ va Estetik Dizaynlar hamda Logo Yaratish Xizmati</h2>
+                    <p class="lead">
+                        Kreativ va estetik dizaynlar: <strong>web-saytlar, mobil ilovalar interfeyslari, logolar va
+                            brending</strong>.
+                        Har bir loyiha — o‘ziga xos va zamonaviy uslubda yaratiladi.
+                        Ish jarayonida Adobe Photoshop, Figma, Illustrator kabi dizayn vositalari va HTML, CSS,
+                        JavaScript, React texnologiyalaridan foydalanaman.
+                        Sizga moslashtirilgan, funksional va vizual jihatdan mukammal yechimlar taqdim etaman.
+                    </p>
+
+
+                    <div class="cta-row">
+                        <a class="btn" href="#contact">Bog'lanish</a>
+                        <a class="btn secondary" href="#services">Xizmatlar</a>
+                    </div>
+                </div>
+
+                <div class="avatar" aria-hidden="true">KH</div>
+            </section>
+
+            <!-- ABOUT -->
+            <section id="about" class="card reveal" style="margin-top:14px">
+                <h3>Haqida</h3>
+                <p class="note" style="margin-top:8px">
+                   Salom! Men Xasan, 2 yillik tajribaga ega grafik dizaynerman. Brend identifikatsiyasi, reklama dizaynlari va UI/UX bo'yicha ish olib boraman. Dizayn - bu nafaqat chiroyli tasvir, balki biznes maqsadlariga xizmat qiluvchi vosita deb bilaman.»
+*Shu kungacha 100+ loyiha ustida ishladim. Reklama materiallari, qadoqlash dizayni ustida ishlashni yaxshi ko'raman.
+                </p>
+            </section>
+
+
+            <!-- SERVICES -->
+            <section id="services" class="card reveal" style="margin-top:14px">
+                <h3>Xizmatlar</h3>
+                <div class="services" style="margin-top:12px">
+
+                    <div class="service">
+                        <h4>Logo Dizayn</h4>
+                        <p class="meta">Brendning yuzini yaratuvchi, unutilmas va professional logotiplar.</p>
+                    </div>
+
+                    <div class="service">
+                        <h4>Branding & Identitet</h4>
+                        <p class="meta">To‘liq brend identiteti: rang palitrasi, shriftlar, uslubiy qo‘llanma.</p>
+                    </div>
+
+                    <div class="service">
+                        <h4>Banner & Reklama Dizayni</h4>
+                        <p class="meta">Ijtimoiy tarmoqlar va reklama uchun kreativ banner va afishalar.</p>
+                    </div>
+
+                    <div class="service">
+                        <h4>Packaging Dizayn</h4>
+                        <p class="meta">Mahsulotlaringiz uchun jozibali va funksional qadoqlash dizayni.</p>
+                    </div>
+
+                    <div class="service">
+                        <h4>Poligrafiya Materiallari</h4>
+                        <p class="meta">Vizitka, buklet, katalog va boshqa bosma mahsulot dizaynlari.</p>
+                    </div>
+
+                    <div class="service">
+                        <h4>Kreativ Loyihalar</h4>
+                        <p class="meta">Yangi g‘oyalar, kreativ konsepsiyalar va maxsus dizayn ishlari.</p>
+                    </div>
+
+                </div>
+            </section>
+
+
+            <!-- CONTACT -->
+            <section id="contact" class="card reveal" style="margin-top:14px">
+                <h3>Kontakt — Telegram orqali</h3>
+                <p class="note" style="margin-top:8px">Quyidagi forma to‘ldirilsa, xabar to‘g‘ridan-to‘g‘ri mening
+                    Telegram ga keladi.</p>
+
+                <form id="contactForm" class="contact-grid" style="margin-top:12px">
+                    <div>
+                        <label for="name">Ismingiz</label>
+                        <input id="name" name="name" placeholder="Ismingiz" required>
+                    </div>
+
+                    <div>
+                        <label for="username">Telegram username (misol: @foydalanuvchi)</label>
+                        <input id="username" name="username" placeholder="@username" required>
+                    </div>
+
+                    <div style="grid-column:1 / -1">
+                        <label for="message">Xabar</label>
+                        <textarea id="message" name="message" rows="5" placeholder="Xabaringiz..." required></textarea>
+                    </div>
+
+                    <div style="display:flex;gap:10px;align-items:center;grid-column:1 / -1">
+                        <button type="submit" class="btn">Yuborish</button>
+                        <div id="formRes" class="note" style="display:none"></div>
+                    </div>
+
+                    <div style="grid-column:1 / -1" class="note">Eslatma: Bu sayt NEMATOV NOZIMJON tomonidan yaratilgan
+                        taklif yoki muommolar bolsa marhamat yozib qoldirishingiz mumkin😀.</div>
+                </form>
+            </section>
+
+        </main>
+
+        <footer>© <span id="year"></span> Khusan — All rights reserved.</footer>
+    </div>
+
+    <script>
+        /* ============================
+           Full JS: mobile nav, reveal,
+           active menu, smooth scroll,
+           Telegram form (browser-side)
+           ============================ */
+
+        // Year
+        document.getElementById('year').textContent = new Date().getFullYear();
+
+        // Mobile nav toggle
+        const hamburger = document.getElementById('hamburger');
+        const mobileNav = document.getElementById('mobileNav');
+        hamburger.addEventListener('click', () => {
+            hamburger.classList.toggle('open');
+            const shown = mobileNav.getAttribute('aria-hidden') === 'false';
+            mobileNav.setAttribute('aria-hidden', String(!shown));
+            mobileNav.style.display = shown ? 'none' : 'flex';
+        });
+
+        // Smooth scroll + close mobile nav on click
+        document.querySelectorAll('.nav-link').forEach(a => {
+            a.addEventListener('click', (e) => {
+                const href = a.getAttribute('href');
+                if (!href || !href.startsWith('#')) return;
+                const id = href.slice(1);
+                const el = document.getElementById(id);
+                if (el) {
+                    e.preventDefault();
+                    el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+                // close mobile nav
+                if (mobileNav.style.display === 'flex') {
+                    mobileNav.style.display = 'none';
+                    mobileNav.setAttribute('aria-hidden', 'true');
+                    hamburger.classList.remove('open');
+                }
+            });
+        });
+
+        // Scroll reveal
+        const reveals = document.querySelectorAll('.reveal');
+        const io = new IntersectionObserver((entries, obs) => {
+            entries.forEach(en => {
+                if (en.isIntersecting) {
+                    en.target.classList.add('visible');
+                    obs.unobserve(en.target);
+                }
+            });
+        }, { threshold: 0.18 });
+        reveals.forEach(r => io.observe(r));
+
+        // Active nav highlight while scrolling
+        const navLinks = document.querySelectorAll('.nav-link');
+        const sections = Array.from(navLinks).map(l => {
+            const h = l.getAttribute('href');
+            if (!h || !h.startsWith('#')) return null;
+            return document.getElementById(h.slice(1));
+        }).filter(Boolean);
+
+        const secObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const id = entry.target.id;
+                    navLinks.forEach(n => n.classList.toggle('active', n.getAttribute('href') === ('#' + id)));
+                }
+            });
+        }, { threshold: 0.45 });
+        sections.forEach(s => secObserver.observe(s));
+
+        // ============================
+        // Telegram integration (client-side)
+        // ============================
+        // IMPORTANT:
+        //  - Replace BOT_TOKEN and CHAT_ID below with your values.
+        //  - Storing BOT_TOKEN in browser is insecure for public sites.
+        //  - Prefer server-side sending for production.
+        const BOT_TOKEN = "8332907934:AAHD8FBpbm3mwI7m2GchN6mO5WZ7zfxkDNM"; // <-- REPLACE (no spaces)
+        const CHAT_ID = "6629427310";    // <-- REPLACE
+
+        function escapeHtml(str = "") {
+            return String(str).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+        }
+
+        document.getElementById('contactForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const btn = e.target.querySelector('button[type="submit"]');
+            const status = document.getElementById('formRes');
+            status.style.display = 'none';
+            btn.disabled = true;
+            btn.textContent = '⏳ Yuborilmoqda...';
+
+            const name = document.getElementById('name').value.trim();
+            const username = document.getElementById('username').value.trim();
+            const message = document.getElementById('message').value.trim();
+
+            if (!name || !username || !message) {
+                status.style.display = 'block';
+                status.style.color = '#fbbf24';
+                status.textContent = 'Iltimos, barcha maydonlarni to‘ldiring.';
+                btn.disabled = false;
+                btn.textContent = 'Yuborish';
+                return;
+            }
+
+            // Compose HTML-safe message
+            const text = `<b>📩 Yangi xabar</b>\n\n<b>Ism:</b> ${escapeHtml(name)}\n<b>Username:</b> ${escapeHtml(username)}\n<b>Xabar:</b> ${escapeHtml(message)}`;
+
+            try {
+                if (!BOT_TOKEN || !CHAT_ID || BOT_TOKEN.includes("PUT_YOUR")) {
+                    throw new Error("Token yoki Chat ID joylanmagan. Kod ichidagi BOT_TOKEN va CHAT_ID ni almashtiring.");
+                }
+
+                const res = await fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ chat_id: CHAT_ID, text: text, parse_mode: 'HTML' })
+                });
+
+                if (!res.ok) {
+                    const txt = await res.text().catch(() => '');
+                    throw new Error(`Telegram API xatosi: ${res.status} ${txt}`);
+                }
+
+                status.style.display = 'block';
+                status.style.color = '#4ade80';
+                status.textContent = '✅ Xabaringiz yuborildi!';
+                e.target.reset();
+                btn.textContent = '✅ Yuborildi';
+            } catch (err) {
+                console.error(err);
+                status.style.display = 'block';
+                status.style.color = '#f87171';
+                status.textContent = '❌ Xabar yuborilmadi — ' + (err.message || 'taniqli xato');
+                btn.textContent = '❌ Xato';
+            } finally {
+                setTimeout(() => {
+                    btn.disabled = false;
+                    btn.textContent = 'Yuborish';
+                }, 2500);
+            }
+        });
+    </script>
+</body>
+
+</html>
